@@ -1,0 +1,15 @@
+# wrangler の作業ディレクトリ。アカウントIDのキャッシュを含むためコミットしない
+.wrangler/
+
+# 依存・OS
+node_modules/
+.DS_Store
+
+# 秘密情報（このリポジトリでは使わないが、事故防止のため先に置く）
+.env
+.env.*
+.dev.vars
+*.p8
+*.p12
+*.key
+*.pem

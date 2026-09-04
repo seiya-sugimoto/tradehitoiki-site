@@ -1,0 +1,24 @@
+# 公開ページ（プライバシーポリシー・利用規約・トップ）を Cloudflare Workers の
+# 静的アセット配信で公開する。2026-09-03 に Notion から移行した。
+#
+# Pages ではなく Workers を使う理由:
+#   `wrangler pages project create` が Cloudflare API のエラー（code 8000000）で
+#   通らず、wrangler 自身も新規プロジェクトは Workers を推奨しているため。
+#
+# 公開URL: https://tradehitoiki-site.sugimon.workers.dev/privacy.html
+#
+# ⚠️ このURLは App Store Connect のプライバシーポリシーURLと、
+#    アプリ内（components/PaywallModal.tsx）のリンクから参照される。
+#    変更するとストア申請済みのリンクとアプリ内定数の両方に波及する。
+
+# account_id はこのファイルに書かない。このリポジトリは public のため。
+# 秘密鍵ではない（単体では何も操作できずAPIトークンが別途要る）が、
+# 公開範囲を無用に広げない。wrangler はログイン中のアカウントを使う。
+# 複数アカウントに所属していて選択を求められる場合は、環境変数で渡す:
+#   $env:CLOUDFLARE_ACCOUNT_ID = "..."   （PowerShell）
+
+name = "tradehitoiki-site"
+compatibility_date = "2026-09-03"
+
+[assets]
+directory = "."
